@@ -1,2 +1,2 @@
 envs_dirs:
-  - /opt/lts_python/envs
+  - /opt/python/envs

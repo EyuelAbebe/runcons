@@ -1,10 +1,15 @@
 # =============================================================== #
 #
 # PERSONAL $HOME/.bashrc FILE for bash-3.0 (or later)
-# By Emmanuel Rouat [no-email]
+# Copied from Emmanuel Rouat [no-email] and modified by
+# Jon Schiefelbein
 #
-# Last modified: Tue Nov 20 22:04:47 CET 2012
-
+# Last modified: 4 Jun 2015
+#
+# This file is meant to me modified (hopefully automatically) before
+# being used.  Things like the username will not work until they are
+# modified.
+#
 #  This file is normally read by interactive shells only.
 #+ Here is the place to define your aliases, functions and
 #+ other interactive features like your prompt.
@@ -30,11 +35,9 @@
 #
 # =============================================================== #
 
-# --> Comments added by HOWTO author.
-
 # Use a local drive versus a network drive for home
-export HOME=/opt/jschiefelbein
-cd /opt/jschiefelbein
+export HOME=/opt/{{username}}
+cd /opt/{{username}}
 
 # If not running interactively, don't do anything
 [ -z "$PS1" ] && return
@@ -926,10 +929,13 @@ complete -F _killall killall killps
 
 # ---- Anaconda
 # added by Miniconda3 3.10.1 installer
-export PATH="/opt/lts_python/miniconda3/bin:$PATH"
+export PATH="/opt/python/miniconda3/bin:$PATH"
 
 # activate a python 2 env so ansible can be used
-source activate python27
+if [ -d "/opt/python/envs/python27" ];
+then
+    source activate python27
+fi
 
 # =====================================
 # Ansible Settings
