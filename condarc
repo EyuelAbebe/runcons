@@ -71,7 +71,7 @@ show_channel_urls: True
 # The CONDA_ENVS_PATH environment variable, which is a colon separated list,
 # allows overwriting this setting here.
 envs_dirs:
-  - /opt/python/envs
+  - /opt/py_devtools/envs
 
 #############################################################################
 
