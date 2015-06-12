@@ -1,0 +1,122 @@
+#!/bin/bash
+# ############################################################################
+# A script to initialize git setup, includes name, email and editor
+# ############################################################################
+
+# Version and Licence text
+VERSION="Git Initialization Setup 0.1a"
+COPYRIGHT="Copyright (C) 2015 Jon Schiefelbein"
+LICENSE=$(cat <<EOF
+License GPLv3+:  GNU GPL version 3 or later <http://gnu.org/licenses/gpl.htm>
+
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.
+EOF
+)
+
+# The help text
+HELP=$(cat <<EOF
+git_setup
+
+Usage:
+    git_setup -n | --name <user's name>
+    git_setup -m | --email <user's e-mail>
+    git_setup -e | --editor <editor name>
+    git_setup -n <user's name> -m <user's e-mail> -e <editor name>
+    git_setup (-n <user's name> | -m <user's e-mail> | -e <editor name>)
+    git_setup -h | --help
+    git_setup --version
+
+Options:
+    -h --help   Show this screen
+    --version   Show version.
+    -n --name   Username for git setup, i.e. Joe Cool
+    -m --email  E-mail for use by git when commiting
+    -e --editor Editor to use when commiting from the command line
+
+Report bugs to:  lowcloudnine@hotmail.com
+Git Initiailization Setup home page:  https://github.com/lowcloudnine/runcons
+
+EOF
+)
+
+# Check to see if there are some command line variables
+if [[ $# -lt 1 ]];
+then
+    echo "Please enter at least one parameter for the script to run."
+    echo ""
+    echo "$HELP"
+    exit
+fi
+
+# Read in the command line variables
+while [[ $# > 0 ]]
+do
+    case $1 in
+        -v|--version)
+            echo $VERSION
+            echo $COPYRIGHT
+            echo "$LICENSE"
+            exit
+            ;;
+
+        -n|--name)
+            NAME="$2"
+            shift
+            ;;
+
+        -m|--email)
+            EMAIL="$2"
+            shift
+            ;;
+
+        -e|--editor)
+            EDITOR="$2"
+            shift
+            ;;
+
+        -f|--file)
+            FILE="$2"
+            shift
+            ;;
+
+        -h|--help|*)
+            # help and unknown option
+            echo "$HELP"
+            exit
+            ;;
+    esac
+    shift # past argument or value
+done
+
+if [ -z "$NAME" ];
+then
+    NAME=false
+else
+    git config --global user.name "$NAME"
+fi
+
+if [ -z "$EMAIL" ];
+then
+    EMAIL=false
+else
+    git config --global user.email "$EMAIL"
+fi
+
+if [ -z "$EDITOR" ];
+then
+    EDITOR=false
+else
+    git config --global core.editor "$EDITOR"
+fi
+
+git config --global color.ui true
+cp ./gitmessage.txt ~/.gitmessage.txt
+git config --global commit.template ~/.gitmessage.txt
+
+echo ""
+echo "Git has been configured please review and set other options as needed:"
+echo ""
+git config -l
+echo ""
+echo "Have a nice day!"
