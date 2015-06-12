@@ -110,10 +110,14 @@ else
     git config --global core.editor "$EDITOR"
 fi
 
+# #####################################
+# Last bit of settings and a message template
 git config --global color.ui true
 cp ./gitmessage.txt ~/.gitmessage.txt
 git config --global commit.template ~/.gitmessage.txt
 
+# #####################################
+# List the new Git configs for review and finish
 echo ""
 echo "Git has been configured please review and set other options as needed:"
 echo ""
