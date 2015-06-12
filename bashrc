@@ -36,12 +36,11 @@
 # =============================================================== #
 
 # Use a local drive versus a network drive for home
-export HOME=/opt/{{username}}
-cd /opt/{{username}}
+# export HOME=/opt/{{username}}
+# cd /opt/{{username}}
 
 # If not running interactively, don't do anything
 [ -z "$PS1" ] && return
-
 
 #-------------------------------------------------------------
 # Source global definitions (if any)
@@ -163,10 +162,7 @@ On_White='\e[47m'       # White
 
 NC="\e[m"               # Color Reset
 
-
 ALERT=${BWhite}${On_Red} # Bold White on red background
-
-
 
 echo -e "${BCyan}This is BASH ${BRed}${BASH_VERSION%.*}${BCyan}\
 - DISPLAY on ${BRed}$DISPLAY${NC}\n"
@@ -216,7 +212,6 @@ trap _exit EXIT
 #    Command is added to the history file each time you hit enter,
 #    so it's available to all shells (using 'history -a').
 
-
 # Test connection type:
 if [ -n "${SSH_CONNECTION}" ]; then
     CNX=${Green}        # Connected on remote machine, via ssh (good).
@@ -234,7 +229,6 @@ elif [[ ${USER} != $(logname) ]]; then
 else
     SU=${BCyan}         # User is normal (well ... most of us are).
 fi
-
 
 NCPU=$(grep -c 'processor' /proc/cpuinfo)    # Number of CPUs
 SLOAD=$(( 100*${NCPU} ))        # Small load
@@ -298,7 +292,6 @@ function job_color()
 
 # Adds some text in the terminal frame (if applicable).
 
-
 # Now weonstruct the prompt.
 PROMPT_COMMAND="history -a"
 case ${TERM} in
@@ -326,7 +319,6 @@ export HISTIGNORE="&:bg:fg:ll:h"
 export HISTTIMEFORMAT="$(echo -e ${BCyan})[%d/%m %H:%M:%S]$(echo -e ${NC}) "
 export HISTCONTROL=ignoredups
 export HOSTFILE=$HOME/.hosts    # Put a list of remote hosts in ~/.hosts
-
 
 #============================================================
 #
@@ -379,7 +371,6 @@ alias lr='ll -R'           #  Recursive ls.
 alias la='ll -A'           #  Show hidden files.
 alias tree='tree -Csuh'    #  Nice alternative to 'recursive ls' ...
 
-
 #-------------------------------------------------------------
 # Tailoring 'less'
 #-------------------------------------------------------------
@@ -401,7 +392,6 @@ export LESS_TERMCAP_so=$'\E[01;44;33m'
 export LESS_TERMCAP_ue=$'\E[0m'
 export LESS_TERMCAP_us=$'\E[01;32m'
 
-
 #-------------------------------------------------------------
 # Spelling typos - highly personnal and keyboard-dependent :-)
 #-------------------------------------------------------------
@@ -411,7 +401,6 @@ alias vf='cd'
 alias moer='more'
 alias moew='more'
 alias kk='ll'
-
 
 #-------------------------------------------------------------
 # A few fun ones
@@ -428,7 +417,6 @@ function xtitle()
     esac
 }
 
-
 # Aliases that use xtitle
 alias top='xtitle Processes on $HOST && top'
 alias make='xtitle Making $(basename $PWD) ; make'
@@ -441,7 +429,6 @@ function man()
         command man -a "$i"
     done
 }
-
 
 #-------------------------------------------------------------
 # Make the following commands run in background automatically:
@@ -460,11 +447,9 @@ function soffice() { command soffice "$@" & }
 function firefox() { command firefox "$@" & }
 function xpdf() { command xpdf "$@" & }
 
-
 #-------------------------------------------------------------
 # File & strings related functions:
 #-------------------------------------------------------------
-
 
 # Find a file with a pattern in name:
 function ff() { find . -type f -iname '*'"$*"'*' -ls ; }
@@ -958,4 +943,3 @@ fi
 # mode:shell-script
 # sh-shell:bash
 # End:
-
