@@ -5,8 +5,8 @@
 
 # Version and Licence text
 VERSION="Git Initialization Setup 0.1a"
-COPYRIGHT="Copyright (C) 2015 Jon Schiefelbein"
 LICENSE=$(cat <<EOF
+Copyright (C) 2015 Jon Schiefelbein
 License GPLv3+:  GNU GPL version 3 or later <http://gnu.org/licenses/gpl.htm>
 
 This is free software: you are free to change and redistribute it.
@@ -15,6 +15,8 @@ EOF
 )
 
 # The help text
+# This should follow the docopts format found at:
+#
 HELP=$(cat <<EOF
 git_setup
 
@@ -54,8 +56,7 @@ while [[ $# > 0 ]]
 do
     case $1 in
         -v|--version)
-            echo $VERSION
-            echo $COPYRIGHT
+            echo "$VERSION"
             echo "$LICENSE"
             exit
             ;;
