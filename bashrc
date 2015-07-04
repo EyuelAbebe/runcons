@@ -914,13 +914,13 @@ complete -F _killall killall killps
 
 # ---- Anaconda
 # added by Miniconda3 3.10.1 installer
-export PATH="/opt/py_devtools/miniconda3/bin:$PATH"
+export PATH="/opt/pytools/miniconda3/bin:$PATH"
 
 # activate a python 2 env so ansible can be used
-if [ -d "/opt/py_devtools/envs/python27" ];
-then
-    source activate python27
-fi
+# if [ -d "/opt/pytools/envs/python27" ];
+# then
+#     source activate python27
+# fi
 
 # =====================================
 # Ansible Settings
