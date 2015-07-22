@@ -1,0 +1,149 @@
+# ============================================================================
+# WINDOW SETUP
+# ============================================================================
+# Prerequisites
+# conky <- sudo apt-get install conky-all
+# sensors <- sudo apt-get install lm-sensors
+# cpufreq-info <- sudo apt-get install cpufrequtils
+# hddtemp <- sudo apt-get install hddtemp
+# Poky font
+
+background yes
+font Caliban:size=8
+xftfont Caliban:size=8
+use_xft yes
+xftalpha 0.5
+update_interval 1.0
+total_run_times 0
+
+own_window_class conky
+own_window yes
+own_window_type conky
+own_window_transparent yes
+own_window_hints undecorated,below,sticky,skip_taskbar,skip_pager
+
+double_buffer yes
+draw_shades yes
+draw_outline yes
+draw_borders no
+draw_graph_borders no
+
+minimum_size 325
+maximum_width 325
+
+default_color ffffff
+default_shade_color 000000
+draw_outline no
+alignment top_right
+gap_x 12
+gap_y 43
+no_buffers yes
+cpu_avg_samples 1
+override_utf8_locale no
+uppercase no
+use_spacer none
+
+# ============================================================================
+# INFORMATION SETUP
+# ============================================================================
+# Must start with the word TEXT on a line by itself
+TEXT
+
+
+
+# ----------------------------------------------------------------------------
+# Header
+# ----------------------------------------------------------------------------
+${voffset -32}${goto 100}${font :style=Bold:pixelsize=18}${nodename}${font}
+
+
+# ----------------------------------------------------------------------------
+# System Info
+# ----------------------------------------------------------------------------
+# Header
+${voffset -8}${goto 34}${font :style=Bold:pixelsize=12}SYS${font}${voffset -19} ${font Poky:pixelsize=32}x${font}
+${voffset -8}${color ccc}${hr}${color}
+
+# Kernel and Machine
+${goto 33}${font :style=Bold:pixelsize=12}Kernel:${goto 128} $kernel ${font}
+${goto 33}${font :style=Bold:pixelsize=12}Machine:${goto 128}  $machine ${font}
+${goto 33}${font :style=Bold:pixelsize=12}Uptime:${goto 128} $uptime_short ${font}
+${goto 33}${font :style=Bold:pixelsize=12}Users Logins:${goto 128} $user_number ${font}
+
+
+
+# ----------------------------------------------------------------------------
+# CPU Info
+# ----------------------------------------------------------------------------
+# Header
+${voffset -8}${goto 34}${font :style=Bold:pixelsize=12}CPU${font}${voffset -19} ${font Poky:pixelsize=32}P${font}
+${voffset -8}${color ccc}${hr}${color}
+
+# CPU 1
+${goto 33}${font :style=Bold:pixelsize=12}CPU 1  ${freq_g 1}GHz  ${alignc}${cpubar cpu1 8,80}${voffset -1}${goto 246}${font :style=Bold:pixelsize=12}${cpu cpu1}%   ${exec sensors -f | grep 'Core 0' | awk '{print substr($3,2,length($3)-3);}'}F${font}
+# CPU 2
+${goto 33}${font :style=Bold:pixelsize=12}CPU 2  ${freq_g 2}GHz  ${alignc}${cpubar cpu2 8,80}${voffset -1}${goto 246}${font :style=Bold:pixelsize=12}${cpu cpu2}%${font}
+# CPU 3
+${goto 33}${font :style=Bold:pixelsize=12}CPU 3  ${freq_g 3}GHz  ${alignc}${cpubar cpu3 8,80}${voffset -1}${goto 246}${font :style=Bold:pixelsize=12}${cpu cpu3}%   ${exec sensors -f | grep 'Core 1' | awk '{print substr($3,2,length($3)-3);}'}F${font}
+# CPU 4
+${goto 33}${font :style=Bold:pixelsize=12}CPU 4  ${freq_g 4}GHz  ${alignc}${cpubar cpu4 8,80}${voffset -1}${goto 246}${font :style=Bold:pixelsize=12}${cpu cpu4}%${font}
+# CPU 5
+${goto 33}${font :style=Bold:pixelsize=12}CPU 5  ${freq_g 5}GHz  ${alignc}${cpubar cpu5 8,80}${voffset -1}${goto 246}${font :style=Bold:pixelsize=12}${cpu cpu5}%   ${exec sensors -f | grep 'Core 2' | awk '{print substr($3,2,length($3)-3);}'}F${font}
+# CPU 6
+${goto 33}${font :style=Bold:pixelsize=12}CPU 6  ${freq_g 6}GHz  ${alignc}${cpubar cpu6 8,80}${voffset -1}${goto 246}${font :style=Bold:pixelsize=12}${cpu cpu6}%${font}
+# CPU 7
+${goto 33}${font :style=Bold:pixelsize=12}CPU 7  ${freq_g 7}GHz  ${alignc}${cpubar cpu7 8,80}${voffset -1}${goto 246}${font :style=Bold:pixelsize=12}${cpu cpu7}%   ${exec sensors -f | grep 'Core 3' | awk '{print substr($3,2,length($3)-3);}'}F${font}
+# CPU 8
+${goto 33}${font :style=Bold:pixelsize=12}CPU 8  ${freq_g 8}GHz  ${alignc}${cpubar cpu8 8,80}${voffset -1}${goto 246}${font :style=Bold:pixelsize=12}${cpu cpu8}%${font}
+
+${goto 48}Load${goto 110}${color C7FF8E}$loadavg${color}
+${goto 48}Processes${goto 110}${color C7FF8E}$processes${color}
+${goto 48}Running${goto 110}$running_processes ${color}
+
+
+
+# ----------------------------------------------------------------------------
+# Memory Info
+# ----------------------------------------------------------------------------
+# Header
+${voffset -8}${goto 34}${font :style=Bold:pixelsize=12}MEM${font}${voffset -19} ${font Poky:pixelsize=32}a${font}
+${voffset -8}${color ccc}${hr}${color}
+
+${goto 33}${font :style=Bold:pixelsize=12}RAM ${alignr 50}${color A0CCFF}   ${membar 8,180}${color}
+${goto 100}$mem / $memmax
+${goto 33}${font :style=Bold:pixelsize=12}Swap ${alignr 50}${color A0CCFF}   ${swapbar 8,180}${color}
+${goto 100}$swap / $swapmax
+
+
+
+# ----------------------------------------------------------------------------
+# Storage Info
+# ----------------------------------------------------------------------------
+# Header
+${voffset -8}${goto 33}${font :style=Bold:pixelsize=12}STR${font}${voffset -19} ${font Poky:pixelsize=32}y${font}
+${voffset -8}${color ccc}${hr}${color}
+
+${goto 33}${font :style=Bold:pixelsize=12}Primary Drive  ${alignc}${color 83A1FF}${fs_bar 8,150 /}${color}${font}
+
+${goto 33}${font :style=Bold:pixelsize=12}               ${alignc}     used       free        size${font}
+${goto 33}${font :style=Bold:pixelsize=12}Root            ${alignc}${fs_used /}   ${fs_free /}   ${fs_size /}${font}
+${goto 33}${font :style=Bold:pixelsize=12}Home          ${alignc}${fs_used /home/jschiefelbein}   ${fs_free /home/jschiefelbein}   ${fs_size /home/jschiefelbein}${font}
+
+
+
+# ----------------------------------------------------------------------------
+# Network Info
+# ----------------------------------------------------------------------------
+# Header
+${voffset -8}${goto 33}${font :style=Bold:pixelsize=12}NET${font}${voffset -19} ${font Poky:pixelsize=32}w${font}
+${voffset -8}${color ccc}${hr}${color}
+
+
+
+${goto 118}${font Poky:pixelsize=22}i${font}${voffset -40} Download: ${downspeed eth0}
+${goto 148}${voffset -6}${downspeedgraph eth0 25,150 D9FFDF A5FEB3}
+${goto 148}${voffset -4}Upload: ${upspeed eth0}
+${goto 148}${voffset -6}${upspeedgraph eth0 25,150 FEC2A5 FA9C6F}
+${goto 118}${font Poky:pixelsize=22}e${font}
+${goto 148}${voffset -26}Total:  down:${totaldown eth0} 
+${goto 189}up:${totalup eth0}
