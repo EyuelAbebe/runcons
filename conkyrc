@@ -28,8 +28,8 @@ draw_outline yes
 draw_borders no
 draw_graph_borders no
 
-minimum_size 325
-maximum_width 325
+minimum_size 256
+maximum_width 256
 
 default_color ffffff
 default_shade_color 000000
@@ -54,7 +54,8 @@ TEXT
 # ----------------------------------------------------------------------------
 # Header
 # ----------------------------------------------------------------------------
-${voffset -32}${goto 100}${font :style=Bold:pixelsize=18}${nodename}${font}
+${voffset -32}${alignc 20}${font :style=Bold:pixelsize=18}${nodename}${font}
+
 
 
 # ----------------------------------------------------------------------------
@@ -65,10 +66,10 @@ ${voffset -8}${goto 34}${font :style=Bold:pixelsize=12}SYS${font}${voffset -19} 
 ${voffset -8}${color ccc}${hr}${color}
 
 # Kernel and Machine
-${goto 33}${font :style=Bold:pixelsize=12}Kernel:${goto 128} $kernel ${font}
-${goto 33}${font :style=Bold:pixelsize=12}Machine:${goto 128}  $machine ${font}
-${goto 33}${font :style=Bold:pixelsize=12}Uptime:${goto 128} $uptime_short ${font}
-${goto 33}${font :style=Bold:pixelsize=12}Users Logins:${goto 128} $user_number ${font}
+${goto 23}${font :style=Bold:pixelsize=12}Kernel:${goto 118} $kernel ${font}
+${goto 23}${font :style=Bold:pixelsize=12}Machine:${goto 118}  $machine ${font}
+${goto 23}${font :style=Bold:pixelsize=12}Uptime:${goto 118} $uptime_short ${font}
+${goto 23}${font :style=Bold:pixelsize=12}Users Logins:${goto 118} $user_number ${font}
 
 
 
@@ -80,21 +81,21 @@ ${voffset -8}${goto 34}${font :style=Bold:pixelsize=12}CPU${font}${voffset -19} 
 ${voffset -8}${color ccc}${hr}${color}
 
 # CPU 1
-${goto 33}${font :style=Bold:pixelsize=12}CPU 1  ${freq_g 1}GHz  ${alignc}${cpubar cpu1 8,80}${voffset -1}${goto 246}${font :style=Bold:pixelsize=12}${cpu cpu1}%   ${exec sensors -f | grep 'Core 0' | awk '{print substr($3,2,length($3)-3);}'}F${font}
+${goto 10}${font :style=Bold:pixelsize=12}CPU 1  ${freq_g 1}GHz  ${alignc}${cpubar cpu1 8,50}${voffset -1}${goto 186}${font :style=Bold:pixelsize=12}${cpu cpu1}%   ${exec sensors -f | grep 'Core 0' | awk '{print substr($3,2,length($3)-3);}'}F${font}
 # CPU 2
-${goto 33}${font :style=Bold:pixelsize=12}CPU 2  ${freq_g 2}GHz  ${alignc}${cpubar cpu2 8,80}${voffset -1}${goto 246}${font :style=Bold:pixelsize=12}${cpu cpu2}%${font}
+${goto 10}${font :style=Bold:pixelsize=12}CPU 2  ${freq_g 2}GHz  ${alignc}${cpubar cpu2 8,50}${voffset -1}${goto 186}${font :style=Bold:pixelsize=12}${cpu cpu2}%${font}
 # CPU 3
-${goto 33}${font :style=Bold:pixelsize=12}CPU 3  ${freq_g 3}GHz  ${alignc}${cpubar cpu3 8,80}${voffset -1}${goto 246}${font :style=Bold:pixelsize=12}${cpu cpu3}%   ${exec sensors -f | grep 'Core 1' | awk '{print substr($3,2,length($3)-3);}'}F${font}
+${goto 10}${font :style=Bold:pixelsize=12}CPU 3  ${freq_g 3}GHz  ${alignc}${cpubar cpu3 8,50}${voffset -1}${goto 186}${font :style=Bold:pixelsize=12}${cpu cpu3}%   ${exec sensors -f | grep 'Core 1' | awk '{print substr($3,2,length($3)-3);}'}F${font}
 # CPU 4
-${goto 33}${font :style=Bold:pixelsize=12}CPU 4  ${freq_g 4}GHz  ${alignc}${cpubar cpu4 8,80}${voffset -1}${goto 246}${font :style=Bold:pixelsize=12}${cpu cpu4}%${font}
+${goto 10}${font :style=Bold:pixelsize=12}CPU 4  ${freq_g 4}GHz  ${alignc}${cpubar cpu4 8,50}${voffset -1}${goto 186}${font :style=Bold:pixelsize=12}${cpu cpu4}%${font}
 # CPU 5
-${goto 33}${font :style=Bold:pixelsize=12}CPU 5  ${freq_g 5}GHz  ${alignc}${cpubar cpu5 8,80}${voffset -1}${goto 246}${font :style=Bold:pixelsize=12}${cpu cpu5}%   ${exec sensors -f | grep 'Core 2' | awk '{print substr($3,2,length($3)-3);}'}F${font}
+${goto 10}${font :style=Bold:pixelsize=12}CPU 5  ${freq_g 5}GHz  ${alignc}${cpubar cpu5 8,50}${voffset -1}${goto 186}${font :style=Bold:pixelsize=12}${cpu cpu5}%   ${exec sensors -f | grep 'Core 2' | awk '{print substr($3,2,length($3)-3);}'}F${font}
 # CPU 6
-${goto 33}${font :style=Bold:pixelsize=12}CPU 6  ${freq_g 6}GHz  ${alignc}${cpubar cpu6 8,80}${voffset -1}${goto 246}${font :style=Bold:pixelsize=12}${cpu cpu6}%${font}
+${goto 10}${font :style=Bold:pixelsize=12}CPU 6  ${freq_g 6}GHz  ${alignc}${cpubar cpu6 8,50}${voffset -1}${goto 186}${font :style=Bold:pixelsize=12}${cpu cpu6}%${font}
 # CPU 7
-${goto 33}${font :style=Bold:pixelsize=12}CPU 7  ${freq_g 7}GHz  ${alignc}${cpubar cpu7 8,80}${voffset -1}${goto 246}${font :style=Bold:pixelsize=12}${cpu cpu7}%   ${exec sensors -f | grep 'Core 3' | awk '{print substr($3,2,length($3)-3);}'}F${font}
+${goto 10}${font :style=Bold:pixelsize=12}CPU 7  ${freq_g 7}GHz  ${alignc}${cpubar cpu7 8,50}${voffset -1}${goto 186}${font :style=Bold:pixelsize=12}${cpu cpu7}%   ${exec sensors -f | grep 'Core 3' | awk '{print substr($3,2,length($3)-3);}'}F${font}
 # CPU 8
-${goto 33}${font :style=Bold:pixelsize=12}CPU 8  ${freq_g 8}GHz  ${alignc}${cpubar cpu8 8,80}${voffset -1}${goto 246}${font :style=Bold:pixelsize=12}${cpu cpu8}%${font}
+${goto 10}${font :style=Bold:pixelsize=12}CPU 8  ${freq_g 8}GHz  ${alignc}${cpubar cpu8 8,50}${voffset -1}${goto 186}${font :style=Bold:pixelsize=12}${cpu cpu8}%${font}
 
 ${goto 48}Load${goto 110}${color C7FF8E}$loadavg${color}
 ${goto 48}Processes${goto 110}${color C7FF8E}$processes${color}
@@ -109,9 +110,9 @@ ${goto 48}Running${goto 110}$running_processes ${color}
 ${voffset -8}${goto 34}${font :style=Bold:pixelsize=12}MEM${font}${voffset -19} ${font Poky:pixelsize=32}P${font}
 ${voffset -8}${color ccc}${hr}${color}
 
-${goto 33}${font :style=Bold:pixelsize=12}RAM ${alignr 50}${color A0CCFF}   ${membar 8,180}${color}
+${goto 10}${font :style=Bold:pixelsize=12}RAM ${alignr 10}${color A0CCFF}   ${membar 8,180}${color}
 ${goto 100}$mem / $memmax
-${goto 33}${font :style=Bold:pixelsize=12}Swap ${alignr 50}${color A0CCFF}   ${swapbar 8,180}${color}
+${goto 10}${font :style=Bold:pixelsize=12}Swap ${alignr 10}${color A0CCFF}   ${swapbar 8,180}${color}
 ${goto 100}$swap / $swapmax
 
 
@@ -123,12 +124,12 @@ ${goto 100}$swap / $swapmax
 ${voffset -8}${goto 33}${font :style=Bold:pixelsize=12}STR${font}${voffset -19} ${font Poky:pixelsize=32}y${font}
 ${voffset -8}${color ccc}${hr}${color}
 
-${goto 33}${font :style=Bold:pixelsize=12}Primary Drive  ${alignc}${color 83A1FF}${fs_bar 8,150 /}${color}${font}
-${goto 132}${diskiograph /dev/sda 12, 150 -t -l}
+${goto 10}${font :style=Bold:pixelsize=12}Primary Drive  ${alignc}${color 83A1FF}${alignr 10}${fs_bar 8,136 /}${color}${font}
+${alignr 10}${diskiograph /dev/sda 12, 136 -t -l}
 
-${goto 33}${font :style=Bold:pixelsize=12}               ${alignc}     used       free        size${font}
-${goto 33}${font :style=Bold:pixelsize=12}Root            ${alignc}${fs_used /}   ${fs_free /}   ${fs_size /}${font}
-${goto 33}${font :style=Bold:pixelsize=12}Home          ${alignc}${fs_used /home/jschiefelbein}   ${fs_free /home/jschiefelbein}   ${fs_size /home/jschiefelbein}${font}
+${goto 23}${font :style=Bold:pixelsize=12}        ${alignc}     used         free        size${font}
+${goto 23}${font :style=Bold:pixelsize=12}Root     ${alignc}${fs_used /}     ${fs_free /}   ${fs_size /}${font}
+${goto 23}${font :style=Bold:pixelsize=12}Home   ${alignc}${fs_used /home/jschiefelbein}     ${fs_free /home/jschiefelbein}   ${fs_size /home/jschiefelbein}${font}
 
 
 
@@ -140,17 +141,17 @@ ${voffset -8}${goto 33}${font :style=Bold:pixelsize=12}NET${font}${voffset -19} 
 ${voffset -8}${color ccc}${hr}${color}
 
 # -------- eth0
-${goto 33}${font  :style=Bold:pixelsize=12}eth0 ${alignr 50} ${exec ifconfig eth0 | grep 'inet addr:' | cut -d: -f2 | awk '{ print $1}'}${font}
-${goto 43}Down${goto 80}${downspeed eth0}${goto 140}${downspeedgraph eth0 12,150 ff0000 0000ff -t -l}
-${goto 43}Up${goto 80}${upspeed eth0}${goto 140}${upspeedgraph eth0 12,150 FEC2A5 FA9C6F -t -l}
+${goto 13}${font  :style=Bold:pixelsize=12}eth0 ${alignr 50} ${exec ifconfig eth0 | grep 'inet addr:' | cut -d: -f2 | awk '{ print $1}'}${font}
+${goto 23}Down${goto 60}${downspeed eth0}${alignr 10}${downspeedgraph eth0 12,140 0000FF FF0000 -t -l}
+${goto 23}Up${goto 60}${upspeed eth0}${alignr 10}${upspeedgraph eth0 12,140 0000FF FF0000 -t -l}
 
-${goto 148}Total:  down${goto 225}${totaldown eth0}
-${goto 189}up${goto 225}${totalup eth0}
+${goto 108}Total:  down${goto 185}${totaldown eth0}
+${goto 149}up${goto 185}${totalup eth0}
 
 # -------- eth1
-${goto 33}${font  :style=Bold:pixelsize=12}eth1 ${alignr 50} ${exec ifconfig eth1 | grep 'inet addr:' | cut -d: -f2 | awk '{ print $1}'}${font}
-${goto 43}Down${goto 80}${downspeed eth1}${goto 140}${downspeedgraph eth1 12,150 ff00000 0000ff -t -l}
-${goto 43}Up${goto 80}${upspeed eth1}${goto 140}${upspeedgraph eth1 12,150 FEC2A5 FA9C6F}
+${goto 13}${font  :style=Bold:pixelsize=12}eth1 ${alignr 50} ${exec ifconfig eth1 | grep 'inet addr:' | cut -d: -f2 | awk '{ print $1}'}${font}
+${goto 23}Down${goto 60}${downspeed eth1}${alignr 10}${downspeedgraph eth1 12,140 0000FF FF0000 -t -l}
+${goto 23}Up${goto 60}${upspeed eth1}${alignr 10}${upspeedgraph eth1 12,140 0000FF FF0000 -t -l}
 
-${goto 148}Total:  down${goto 225}${totaldown eth1}
-${goto 189}up${goto 225}${totalup eth1}
+${goto 108}Total:  down${goto 185}${totaldown eth1}
+${goto 149}up${goto 185}${totalup eth1}
